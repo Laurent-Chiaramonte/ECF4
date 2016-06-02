@@ -59,7 +59,7 @@ public class Client
 
     public override string ToString()
     {
-        return string.Format("{0}, {1}, {2}", nom_client, ville_client, tel_client);
+        return string.Format("{0}, {1}, {2}, {3}",num_client, nom_client, ville_client, tel_client);
     }
 
     public override bool Equals(object cl1)

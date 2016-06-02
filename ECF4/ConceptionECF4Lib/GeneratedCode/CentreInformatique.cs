@@ -70,7 +70,7 @@ public class CentreInformatique
 
     }
 
-    public CentreInformatique(int numceinfo, string adrceinfo, int cpceinfo, string vilceinfo, string telceinfo, Contrat ctceinfo,
+    public CentreInformatique(int numceinfo, string adrceinfo, int cpceinfo, string vilceinfo, string telceinfo,
             Client clceinfo)
     {
         num_centre = numceinfo;
@@ -78,13 +78,12 @@ public class CentreInformatique
         cpl_centre = cpceinfo;
         ville_centre = vilceinfo;
         tel_centre = telceinfo;
-        Contrat = ctceinfo;
         Client = clceinfo;
     }
 
     public override string ToString()
     {
-        return string.Format("{0}, {1}, {2}", num_centre, Client.nom_client);
+        return string.Format("{0}, {1}, {2}, {3}", num_centre, Client.nom_client, adresse_centre, ville_centre);
     }
 
     public override bool Equals(object cti1)

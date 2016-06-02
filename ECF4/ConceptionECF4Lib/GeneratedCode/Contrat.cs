@@ -59,23 +59,32 @@ public class Contrat
 		set;
 	}
 
+    public virtual CentreInformatique Centre
+    {
+        get;
+        set;
+    }
+
     public Contrat()
     {
 
     }
 
-    public Contrat(int numct, double mtct, DateTime dtvalct, sbyte stct, Client clct)
+    public Contrat(int numct, double mtct, DateTime dtvalct, sbyte stct, Client clct, 
+        CentreInformatique cti)
     {
         num_contrat = numct;
         montant_contrat = mtct;
         date_validite_contrat = dtvalct;
         statut = stct;
         Client = clct;
+        Centre = cti;
     }
 
     public override string ToString()
     {
-        return string.Format("{0}, {1}, {2}", num_contrat, Client.nom_client);
+        return string.Format("Contrat : {0}, Client : {1}, Centre : {2}", num_contrat, Client.nom_client, 
+            Centre.adresse_centre);
     }
 
     public override bool Equals(object ct1)
