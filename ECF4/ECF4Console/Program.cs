@@ -44,11 +44,13 @@ namespace ECF4Console
             int idctinfo = Convert.ToInt16(Console.ReadLine());
             int idct = 0;
             List<Contrat> lstcont = ECF4dao.ContratDAO.GetContratByCentre(idctinfo);
+            Contrat crt = null;
            
             foreach (Contrat ct in lstcont)
             {
                 Console.WriteLine(ct);
                 idct = ct.num_contrat;
+                crt = ct;
             }
 
             // Résiliation du contrat
@@ -61,7 +63,20 @@ namespace ECF4Console
             }
             if (rep == "y")
             {
+                
                 // resiliation
+                Contrat resct = new Contrat(crt.num_contrat, crt.montant_contrat, crt.date_validite_contrat,
+                    3, crt.Client, crt.Centre, "Résilié par le client");
+                if (ECF4dao.ContratDAO.ResContrat(resct))
+                {
+                    Console.WriteLine("Le contrat a été résilié !");
+                    Console.WriteLine(resct);
+                }
+                else
+                {
+                    Console.WriteLine("Une erreur s'est produite");
+                }
+                
             }
             else if (rep == "n")
             {

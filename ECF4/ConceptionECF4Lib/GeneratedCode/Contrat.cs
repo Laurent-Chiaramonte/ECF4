@@ -81,10 +81,37 @@ public class Contrat
         Centre = cti;
     }
 
+    public Contrat(int numct, double mtct, DateTime dtvalct, sbyte stct, Client clct,
+        CentreInformatique cti, string comm)
+    {
+        num_contrat = numct;
+        montant_contrat = mtct;
+        date_validite_contrat = dtvalct;
+        statut = stct;
+        Client = clct;
+        Centre = cti;
+        commentaire_contrat = comm;
+    }
+
     public override string ToString()
     {
-        return string.Format("Contrat : {0}, Client : {1}, Centre : {2}", num_contrat, Client.nom_client, 
-            Centre.adresse_centre);
+        string st = null;
+        switch (statut)
+        {
+            case 1:           
+                st = "En cours";
+                break;
+            case 2:
+                st = "Renouvelé";
+                break;
+            case 3:
+                st = "Résilié";
+                break;
+
+        }
+            
+        return string.Format("Contrat : {0}, Client : {1}, Centre : {2}, Date d'écheance : {3}, Statut : {4}", 
+            num_contrat, Client.nom_client, Centre.adresse_centre, date_echeance_contrat.ToShortDateString(), st);
     }
 
     public override bool Equals(object ct1)
@@ -94,6 +121,12 @@ public class Contrat
                 ((Contrat)ct1).num_contrat.Equals(this.num_contrat);
         else
             return false;
+    }
+
+    public DateTime CalculDateEch()
+    {
+        date_echeance_contrat = date_validite_contrat.AddYears(1);
+        return date_echeance_contrat;
     }
 }
 

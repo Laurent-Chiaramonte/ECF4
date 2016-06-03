@@ -32,8 +32,8 @@ namespace ECF4dao
             Centres.Add(ceinfo2);
 
             //Contrats
-            Contrat ct1 = new Contrat(1, 24.65, new DateTime(12 / 02 / 2011), 1, cl1, ceinfo1);
-            Contrat ct2 = new Contrat(2, 13.480, new DateTime(13 / 03 / 2011), 1, cl1, ceinfo2);
+            Contrat ct1 = new Contrat(1, 24.65, new DateTime(2011,02,12), 1, cl1, ceinfo1);
+            Contrat ct2 = new Contrat(2, 13.480, new DateTime(2011,03,13), 1, cl1, ceinfo2);
             Contrats = new List<Contrat>();
             Contrats.Add(ct1);
             Contrats.Add(ct2);
