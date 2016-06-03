@@ -9,10 +9,13 @@ namespace ECF4dao
 {
     public class ContratDAO
     {
+        // Déclarations de valeurs 
+
         private static List<Client> Clients;
         private static List<Contrat> Contrats;
         private static List<CentreInformatique> Centres;
 
+        // Init
         public static void init()
         {
             // Clients
