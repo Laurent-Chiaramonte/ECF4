@@ -11,7 +11,9 @@ using System.Text;
 
 public class Client
 {
-	public virtual int num_client
+    // Propriétés
+    #region Propriétés
+    public virtual int num_client
 	{
 		get;
 		set;
@@ -46,7 +48,10 @@ public class Client
 		get;
 		set;
 	}
+    #endregion
 
+    // Constructeurs
+    #region Constructeurs
     public Client (int numcli, string nomcli, string adrcli, int cpcli, string vilcli, string telcli)
     {
         num_client = numcli;
@@ -56,10 +61,13 @@ public class Client
         ville_client = vilcli;
         tel_client = telcli;
     }
+    #endregion
 
+    // Méthodes
+    #region Méthodes
     public override string ToString()
     {
-        return string.Format("{0}, {1}, {2}, {3}",num_client, nom_client, ville_client, tel_client);
+        return string.Format("{0}, {1}, {2}, {3}", num_client, nom_client, ville_client, tel_client);
     }
 
     public override bool Equals(object cl1)
@@ -70,6 +78,8 @@ public class Client
         else
             return false;
     }
+    #endregion
+
 
 
 }

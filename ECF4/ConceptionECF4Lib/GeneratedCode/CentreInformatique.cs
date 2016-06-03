@@ -11,7 +11,9 @@ using System.Text;
 
 public class CentreInformatique
 {
-	public virtual int num_centre
+    // Propriétés
+    #region
+    public virtual int num_centre
 	{
 		get;
 		set;
@@ -64,7 +66,11 @@ public class CentreInformatique
 		get;
 		set;
 	}
+    #endregion Propriétés
 
+
+    // Constructeurs
+    #region 
     public CentreInformatique()
     {
 
@@ -80,7 +86,10 @@ public class CentreInformatique
         tel_centre = telceinfo;
         Client = clceinfo;
     }
+    #endregion Constructeurs
 
+    // Méthodes
+    #region Méthodes
     public override string ToString()
     {
         return string.Format("{0}, {1}, {2}, {3}", num_centre, Client.nom_client, adresse_centre, ville_centre);
@@ -94,6 +103,7 @@ public class CentreInformatique
         else
             return false;
     }
+    #endregion
 
 }
 

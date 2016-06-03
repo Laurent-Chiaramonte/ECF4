@@ -11,7 +11,12 @@ using System.Text;
 
 public class Contrat
 {
-	public virtual int num_contrat
+
+    private DateTime ech;
+
+    // Propriétés
+    #region Propriétés
+    public virtual int num_contrat
 	{
 		get;
 		set;
@@ -31,8 +36,8 @@ public class Contrat
 
 	public virtual DateTime date_echeance_contrat
 	{
-		get;
-		set;
+        get;
+        set;
 	}
 
 	public virtual DateTime date_resiliation_contrat
@@ -65,6 +70,11 @@ public class Contrat
         set;
     }
 
+    #endregion
+
+    // Constructeurs
+    #region Constructeurs
+
     public Contrat()
     {
 
@@ -93,25 +103,38 @@ public class Contrat
         commentaire_contrat = comm;
     }
 
+    #endregion
+
+
+    // Méthodes
+    #region Méthodes
     public override string ToString()
     {
+        string tost = null;
         string st = null;
+        CalculDateEch();
         switch (statut)
         {
             case 1:           
                 st = "En cours";
+                tost = String.Format("Contrat : {0}, Client : {1}, Centre : {2}, Date d'écheance : {3}, Statut : {4}",
+                    num_contrat, Client.nom_client, Centre.adresse_centre, date_echeance_contrat.ToShortDateString(), st);
                 break;
             case 2:
                 st = "Renouvelé";
+                CalculDateRen();
+                tost = String.Format("Contrat : {0}, Client : {1}, Centre : {2}, Date d'écheance : {3}, Statut : {4}",
+                    num_contrat, Client.nom_client, Centre.adresse_centre, date_echeance_contrat.ToShortDateString(), st);
                 break;
             case 3:
                 st = "Résilié";
+                CalculDateRes();
+                tost = String.Format("Contrat : {0}, Client : {1}, Centre : {2}, Date de résiliation : {3}, Statut : {4}, {5}",
+                    num_contrat, Client.nom_client, Centre.adresse_centre, date_resiliation_contrat.ToShortDateString(),
+                    st, commentaire_contrat);
                 break;
-
         }
-            
-        return string.Format("Contrat : {0}, Client : {1}, Centre : {2}, Date d'écheance : {3}, Statut : {4}", 
-            num_contrat, Client.nom_client, Centre.adresse_centre, date_echeance_contrat.ToShortDateString(), st);
+        return tost;
     }
 
     public override bool Equals(object ct1)
@@ -123,10 +146,31 @@ public class Contrat
             return false;
     }
 
+    #endregion
+
+    // Calculs Dates
+
+    #region Calculs Dates
+
     public DateTime CalculDateEch()
     {
         date_echeance_contrat = date_validite_contrat.AddYears(1);
         return date_echeance_contrat;
     }
+
+    public DateTime CalculDateRen()
+    {
+        date_echeance_contrat = date_echeance_contrat.AddYears(1);
+        return date_echeance_contrat;
+    }
+
+    public DateTime CalculDateRes()
+    {
+        date_resiliation_contrat = date_echeance_contrat;
+        return date_resiliation_contrat;
+    }
+
+    #endregion
+
 }
 

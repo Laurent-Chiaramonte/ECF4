@@ -13,20 +13,25 @@ namespace ECF4Console
         static void Main(string[] args)
         {
             // Init
+            #region
             ECF4dao.ContratDAO.init();
             List<Client> lstcl = ECF4dao.ContratDAO.GetAllClients();
 
             Console.WriteLine("Gérer contrat : ");
+            #endregion
 
             // Liste Clients
+            #region
             Console.WriteLine("Liste des clients : ");
 
             foreach (Client cl in lstcl)
             {
                 Console.WriteLine(cl);
             }
+            #endregion
 
             // Liste Centres par Clients
+            #region
             Console.WriteLine("Quel client voulez-vous afficher?");
 
             int idcli = Convert.ToInt16(Console.ReadLine());
@@ -37,8 +42,10 @@ namespace ECF4Console
             {
                 Console.WriteLine(ci);
             }
+            #endregion
 
             // Afficher Contrat par Centre
+            #region
             Console.WriteLine("Quel centre voulez-vous afficher?");
 
             int idctinfo = Convert.ToInt16(Console.ReadLine());
@@ -52,8 +59,10 @@ namespace ECF4Console
                 idct = ct.num_contrat;
                 crt = ct;
             }
+            #endregion
 
             // Résiliation du contrat
+            #region
             Console.WriteLine("Voulez-vous résilier le contrat? y/n ");
             string rep = Console.ReadLine();
             while (rep != "y" && rep != "n")
@@ -63,8 +72,6 @@ namespace ECF4Console
             }
             if (rep == "y")
             {
-                
-                // resiliation
                 Contrat resct = new Contrat(crt.num_contrat, crt.montant_contrat, crt.date_validite_contrat,
                     3, crt.Client, crt.Centre, "Résilié par le client");
                 if (ECF4dao.ContratDAO.ResContrat(resct))
@@ -82,7 +89,8 @@ namespace ECF4Console
             {
                 Console.WriteLine("Fin du programme");
             }
-        
+            #endregion
+
 
             Console.ReadLine();
         }

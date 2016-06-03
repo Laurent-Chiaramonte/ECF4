@@ -35,12 +35,12 @@ namespace ECF4dao
             Contrat ct1 = new Contrat(1, 24.65, new DateTime(2011,02,12), 1, cl1, ceinfo1);
             Contrat ct2 = new Contrat(2, 13.480, new DateTime(2011,03,13), 1, cl1, ceinfo2);
             Contrats = new List<Contrat>();
-            Contrats.Add(ct1);
+            Contrats.Add(ct1);            
             Contrats.Add(ct2);
         }
 
         // Methodes
-
+        #region 
         public static List<Client> GetAllClients()
         {
             return Clients;
@@ -68,5 +68,6 @@ namespace ECF4dao
             }
             else return false;
         }
+        #endregion
     }
 }
