@@ -92,7 +92,8 @@ public class CentreInformatique
     #region Méthodes
     public override string ToString()
     {
-        return string.Format("{0}, {1}, {2}, {3}", num_centre, Client.nom_client, adresse_centre, ville_centre);
+        return string.Format("Centre : {0}, Client : {1}, Adresse : {2}, Ville : {3}",
+            num_centre, Client.nom_client, adresse_centre, ville_centre);
     }
 
     public override bool Equals(object cti1)

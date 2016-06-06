@@ -67,7 +67,8 @@ public class Client
     #region Méthodes
     public override string ToString()
     {
-        return string.Format("{0}, {1}, {2}, {3}", num_client, nom_client, ville_client, tel_client);
+        return string.Format("Client : {0}, Raison sociale : {1}, Ville : {2}, Téléphone : {3}",
+            num_client, nom_client, ville_client, tel_client);
     }
 
     public override bool Equals(object cl1)

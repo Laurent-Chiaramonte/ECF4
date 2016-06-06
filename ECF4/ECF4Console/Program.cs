@@ -12,6 +12,8 @@ namespace ECF4Console
 
         static void Main(string[] args)
         {
+            Contrat crt = null;
+
             // Init
             #region
             ECF4dao.ContratDAO.init();
@@ -32,33 +34,79 @@ namespace ECF4Console
 
             // Liste Centres par Clients
             #region
-            Console.WriteLine("Quel client voulez-vous afficher?");
+            
+            bool bError;
 
-            int idcli = Convert.ToInt16(Console.ReadLine());
-
-            List<CentreInformatique> lstctinfo = ECF4dao.ContratDAO.GetAllCentresByClient(idcli);
-
-            foreach (CentreInformatique ci in lstctinfo)
+            do
             {
-                Console.WriteLine(ci);
-            }
+                try
+                {
+                    bError = false;
+                    Console.WriteLine("Quel client voulez-vous afficher?");
+
+                    string idclient = Console.ReadLine();
+                    int idcli = 0;
+                    idcli = int.Parse(idclient);
+                    List<CentreInformatique> lstctinfo = ECF4dao.ContratDAO.GetAllCentresByClient(idcli);
+                    if (lstctinfo.Count == 0)
+                    {
+                        bError = true;
+                        Console.WriteLine("Le client selectionné n'a pas de centre ou n'existe pas !");
+                    }
+                    foreach (CentreInformatique ci in lstctinfo)
+                    {
+                        Console.WriteLine(ci);
+                    }
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Erreur dans la saisie !");
+                    bError = true;
+                }
+            } while (bError);
+
+
             #endregion
 
             // Afficher Contrat par Centre
             #region
-            Console.WriteLine("Quel centre voulez-vous afficher?");
 
-            int idctinfo = Convert.ToInt16(Console.ReadLine());
-            int idct = 0;
-            List<Contrat> lstcont = ECF4dao.ContratDAO.GetContratByCentre(idctinfo);
-            Contrat crt = null;
-           
-            foreach (Contrat ct in lstcont)
+            do
             {
-                Console.WriteLine(ct);
-                idct = ct.num_contrat;
-                crt = ct;
-            }
+                try
+                {
+                    bError = false;
+                    Console.WriteLine("Quel centre voulez-vous afficher?");
+
+                    string idcentreinfo = Console.ReadLine();
+                    int idctinfo = 0;
+                    idctinfo = int.Parse(idcentreinfo);
+
+                    int idct = 0;
+                    List<Contrat> lstcont = ECF4dao.ContratDAO.GetContratByCentre(idctinfo);
+                    if (lstcont.Count == 0)
+                    {
+                        bError = true;
+                        Console.WriteLine("Le centre n'existe pas !");
+                    }
+                    else
+                    {
+                        bError = false;
+                        foreach (Contrat ct in lstcont)
+                        {
+                            Console.WriteLine(ct);
+                            idct = ct.num_contrat;
+                            crt = ct;
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Erreur dans la saisie !");
+                    bError = true;
+                }
+            } while (bError);
             #endregion
 
             // Résiliation du contrat
