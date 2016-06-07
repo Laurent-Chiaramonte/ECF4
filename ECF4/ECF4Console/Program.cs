@@ -17,6 +17,7 @@ namespace ECF4Console
             // Init
             #region
             ECF4dao.ContratDAO.init();
+
             List<Client> lstcl = ECF4dao.ContratDAO.GetAllClients();
 
             Console.WriteLine("Gérer contrat : ");
@@ -42,22 +43,30 @@ namespace ECF4Console
                 try
                 {
                     bError = false;
+
                     Console.WriteLine("Quel client voulez-vous afficher?");
 
                     string idclient = Console.ReadLine();
+
                     int idcli = 0;
+
                     idcli = int.Parse(idclient);
+
                     List<CentreInformatique> lstctinfo = ECF4dao.ContratDAO.GetAllCentresByClient(idcli);
+
                     if (lstctinfo.Count == 0)
                     {
                         bError = true;
                         Console.WriteLine("Le client selectionné n'a pas de centre ou n'existe pas !");
                     }
-                    foreach (CentreInformatique ci in lstctinfo)
+                    else
                     {
-                        Console.WriteLine(ci);
+                        bError = false;
+                        foreach (CentreInformatique ci in lstctinfo)
+                        {
+                            Console.WriteLine(ci);
+                        }
                     }
-
                 }
                 catch (Exception)
                 {
@@ -77,14 +86,19 @@ namespace ECF4Console
                 try
                 {
                     bError = false;
+
                     Console.WriteLine("Quel centre voulez-vous afficher?");
 
                     string idcentreinfo = Console.ReadLine();
+
                     int idctinfo = 0;
+
                     idctinfo = int.Parse(idcentreinfo);
 
                     int idct = 0;
+
                     List<Contrat> lstcont = ECF4dao.ContratDAO.GetContratByCentre(idctinfo);
+
                     if (lstcont.Count == 0)
                     {
                         bError = true;
@@ -112,7 +126,9 @@ namespace ECF4Console
             // Résiliation du contrat
             #region
             Console.WriteLine("Voulez-vous résilier le contrat? y/n ");
+
             string rep = Console.ReadLine();
+
             while (rep != "y" && rep != "n")
             {
                 Console.WriteLine("Veuillez répondre par y ou n !");

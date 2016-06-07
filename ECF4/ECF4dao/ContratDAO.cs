@@ -30,16 +30,21 @@ namespace ECF4dao
                 cl1);
             CentreInformatique ceinfo2 = new CentreInformatique(2, "11, chemin du littoral", 13015, "Marseille", "0491601462",
                 cl1);
+            CentreInformatique ceinfo3 = new CentreInformatique(3, "14, rue François Chardigny", 13011, "Marseille", "0491691322",
+                cl2);
             Centres = new List<CentreInformatique>();
             Centres.Add(ceinfo1);
             Centres.Add(ceinfo2);
+            Centres.Add(ceinfo3);
 
             //Contrats
             Contrat ct1 = new Contrat(1, 24.65, new DateTime(2011,02,12), 1, cl1, ceinfo1);
             Contrat ct2 = new Contrat(2, 13.480, new DateTime(2011,03,13), 1, cl1, ceinfo2);
+            Contrat ct3 = new Contrat(3, 32.740, new DateTime(2016, 04, 15), 1, cl2, ceinfo3);
             Contrats = new List<Contrat>();
             Contrats.Add(ct1);            
             Contrats.Add(ct2);
+            Contrats.Add(ct3);
         }
 
         // Methodes
