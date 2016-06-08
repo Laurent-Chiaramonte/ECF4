@@ -25,7 +25,7 @@ namespace ECF4Console
 
             // Liste Clients
             #region
-            Console.WriteLine("Liste des clients : ");
+            Console.WriteLine("\nListe des clients : ");
 
             foreach (Client cl in lstcl)
             {
@@ -86,8 +86,8 @@ namespace ECF4Console
                 try
                 {
                     bError = false;
-
-                    Console.WriteLine("Quel centre voulez-vous afficher?");
+                    
+                    Console.WriteLine("\nQuel centre voulez-vous afficher?");
 
                     string idcentreinfo = Console.ReadLine();
 
@@ -125,7 +125,7 @@ namespace ECF4Console
 
             // Résiliation du contrat
             #region
-            Console.WriteLine("Voulez-vous résilier le contrat? y/n ");
+            Console.WriteLine("\nVoulez-vous résilier le contrat? y/n ");
 
             string rep = Console.ReadLine();
 
@@ -140,7 +140,7 @@ namespace ECF4Console
                     3, crt.Client, crt.Centre, "Résilié par le client");
                 if (ECF4dao.ContratDAO.ResContrat(resct))
                 {
-                    Console.WriteLine("Le contrat a été résilié !");
+                    Console.WriteLine("\nLe contrat a été résilié !");
                     Console.WriteLine(resct);
                 }
                 else
@@ -151,7 +151,7 @@ namespace ECF4Console
             }
             else if (rep == "n")
             {
-                Console.WriteLine("Fin du programme");
+                Console.WriteLine("\n Fin du programme");
             }
             #endregion
 
